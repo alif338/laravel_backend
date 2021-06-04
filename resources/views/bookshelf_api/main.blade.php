@@ -83,13 +83,6 @@
                     @empty
                         
                     @endforelse
-                    
-                    {{-- <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 3</td>
-                        <td>Cell 3</td>
-                        <td><button class="btn btn-primary" type="button">Detail</button></td>
-                    </tr> --}}
                 </tbody>
             </table>
         </div>
