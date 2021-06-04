@@ -16,7 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('judul_buku');
-            $table->array('penulis');
+            $table->string('penulis');
             $table->string('url_gambar')->default('https://via.placeholder.com/400x480?text=Book+Cover+Image');
             $table->integer('jumlah_halaman');
             $table->date('tanggal_terbit'); // Format YYYY-MM-DD
