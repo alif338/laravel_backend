@@ -31,10 +31,14 @@ Digunakan sebuah tabel (dinamakan 'dot_backend', dapat dicek di file .env) yang 
 Package luar yang digunakan adalah ```laravel/ui^2.4``` sebagai ui untuk Auth
 
 ### Running this project
+Buka command-line (cmd), lalu ikuti langkah-langkah berikut:
 
 1. Clone this project ```git clone https://github.com/alif338/laravel_backend.git``` 
-2. Install packages ```npm install && npm run dev```
-3. Buat database MySQL dengan nama 'dot_backend' 
-4. Run ```php artisan migrate```
-5. Run ```php artisan serve``` dengan url main ```localhost:8000/book_list```
+2. Run ```cd laravel_backend```
+3. Run ```composer require laravel/ui:^2.4```
+4. Run ```php artisan ui react --auth```
+5. Install packages ```npm install && npm run dev```
+6. Buat database MySQL dengan nama 'dot_backend' 
+7. Run ```php artisan migrate```
+8. Run ```php artisan serve``` dengan url main ```localhost:8000/book_list```
     
