@@ -15,55 +15,79 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><button class="btn btn-primary" type="button" style="background: var(--bs-info);">BUAT DATA BARU</button></div>
+                <div class="col-md-6"><a href="{{ route('create') }}" class="btn btn-primary" type="button" style="background: var(--bs-info);">BUAT DATA BARU</a></div>
                 <div class="col-md-6">
-                    <p class="text-end">Login Status : Not Logged
-                        <a href="{{ route('login') }}" class="btn btn-primary" type="button" style="margin-left: 12px;background: var(--bs-success);">Login</a>
+                    <p class="text-end">Login Status : 
+                        @if (!Auth::user())
+                            <span>Not Logged</span> 
+                            <a href="{{ route('login') }}" class="btn btn-primary" type="button" style="margin-left: 12px;background: var(--bs-success);">Login</a>
+                        @else
+                            <span>Logged</span> 
+                            <a href="{{ route('main') }}" class="btn btn-danger" type="button" style="margin-left: 12px;" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endif
                     </p>
                 </div>
             </div>
         </div>
         <div class="container" style="margin-right: 0px;margin-left: 13.2px;">
-            <form>
-                <div class="row" style="margin-right: 0px;margin-left: 0px;padding-right: 0px;padding-left: 0px;">
-                    <div class="col-md-6"><span>Filter berdasarkan Penulis</span>
+            <div class="row" style="margin-right: 0px;margin-left: 0px;padding-right: 0px;padding-left: 0px;">
+                
+                <div class="col-md-6"><span>Filter berdasarkan Penulis</span>
+                    <form action="{{ route('filter') }}">
+                        @csrf
                         <div class="row" style="padding: 0px;">
-                            <div class="col" style="padding: 0px;"><input class="form-control" type="search" style="margin-left: 10px;"></div>
-                            <div class="col"><button class="btn btn-primary" type="button" style="margin-left: 10px;background: var(--bs-gray-dark);">Filter</button></div>
+                            <div class="col" style="padding: 0px;"><input class="form-control" name="filter" type="search" style="margin-left: 10px;"></div>
+                            <div class="col"><button class="btn btn-primary" type="submit" style="margin-left: 10px;background: var(--bs-gray-dark);">Filter</button></div>
                         </div>
-                    </div>
-                    <div class="col-md-6" style="padding-left: 0px;"><span>Search by Judul Buku</span>
+                    </form>
+                </div>
+                <div class="col-md-5" style="padding-left: 0px;"><span>Search by Judul Buku</span>
+                    <form action="{{ route('search') }}" >
                         <div class="row" style="padding: 0px;">
-                            <div class="col" style="padding: 0px;"><input class="form-control" type="search" style="margin-left: 10px;"></div>
-                            <div class="col"><button class="btn btn-primary" type="button" style="margin-left: 10px;background: var(--bs-gray-dark);">Search</button></div>
+                            <div class="col" style="padding: 0px;"><input class="form-control" name="search" style="margin-left: 10px;"></div>
+                            <div class="col"><button type="submit" class="btn btn-primary" style="margin-left: 10px;background: var(--bs-gray-dark);">Search</button></div>
                         </div>
+                    </form>
+                </div>
+                <div class="col-md-1"><span>&nbsp;</span>
+                    <div class="row">
+                        <div class="col"><a href="{{ route('main') }}" type="submit" class="btn btn-success">Refresh</a></div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
         <div class="text-break">
             <table class="table table-striped">
                 <thead>
                     <tr class="flex-grow-0">
-                        <th>Id</th>
                         <th>Judul Buku</th>
-                        <th>Penulis</th>
+                        <th>Jumlah Halaman</th>
+                        <th>Tanggal Terbit</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse ($books as $item)
                     <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>cell 2</td>
-                        <td><button class="btn btn-primary" type="button">Detail</button></td>
+                        <td><i>{{ $item->judul_buku }}</i></td>
+                        <td>{{ $item->jumlah_halaman }}</td>
+                        <td>{{ $item->tanggal_terbit }}</td>
+                        <td><a href="{{ route('show', ['book_id' => $item->id]) }}" class="btn btn-primary" type="button">Detail</a></td>
                     </tr>
-                    <tr>
+                    @empty
+                        
+                    @endforelse
+                    
+                    {{-- <tr>
                         <td>Cell 1</td>
                         <td>Cell 3</td>
                         <td>Cell 3</td>
                         <td><button class="btn btn-primary" type="button">Detail</button></td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
         </div>
