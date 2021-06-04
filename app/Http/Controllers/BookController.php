@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'search']);
+        $this->middleware('auth')->except(['index', 'search', 'detail', 'filter']);
     }
     /**
      * Display a listing of the resource.
@@ -49,6 +49,7 @@ class BookController extends Controller
             'penulis' => 'required',
             'jumlah_halaman' => 'required',
             'tanggal_terbit' => 'required',
+            'isbn' => 'required',
             'sinopsis' => 'required'
         ]);
 
@@ -60,6 +61,7 @@ class BookController extends Controller
         }
         $book->jumlah_halaman = $request["jumlah_halaman"];
         $book->tanggal_terbit = $request["tanggal_terbit"];
+        $book->isbn = $request["isbn"];
         $book->sinopsis = $request["sinopsis"];
 
         $book->save();
@@ -108,6 +110,7 @@ class BookController extends Controller
             "judul_buku" => 'required',
             "penulis" => 'required',
             "jumlah_halaman" => 'required',
+            "isbn" => 'required',
             "tanggal_terbit" => 'required',
             "sinopsis" => 'required',
         ]);
@@ -117,6 +120,7 @@ class BookController extends Controller
             "penulis" =>  $request["penulis"],
             "url_gambar" =>  $request["url_gambar"],
             "jumlah_halaman" => $request["jumlah_halaman"],
+            "isbn" => $request["isbn"],
             "tanggal_terbit" => $request["tanggal_terbit"],
             "sinopsis" => $request["sinopsis"],
         ]);

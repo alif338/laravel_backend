@@ -8,7 +8,7 @@ class Book extends Model
 {
     //
     protected $table = 'books';
-    protected $fillable = ['judul_buku', 'penulis', 'url_gambar', 'jumlah_halaman', 'tanggal_terbit', 'sinopsis'];
+    protected $fillable = ['judul_buku', 'penulis', 'url_gambar', 'isbn', 'jumlah_halaman', 'tanggal_terbit', 'sinopsis'];
     protected $guarded = ['id'];
     public $timestamps = true;
 }

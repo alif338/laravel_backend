@@ -15,11 +15,12 @@
         <form method="POST" action="{{ route('update', ['book_id' => $books->id]) }}">
             @csrf
             @method('PUT')
-            <h2 class="text-center">Buat Data Buku Baru</h2>
+            <h2 class="text-center">Edit Data Buku Baru</h2>
             <div class="mb-3"><input class="form-control" type="text" placeholder="id" value="{{ old('id', $books->id) }}"  disabled=""></div>
             <div class="mb-3"><input class="form-control" type="text" value="{{ old('Judul Buku', $books->judul_buku) }}" name="judul_buku" placeholder="Judul Buku"></div>
             <div class="mb-3"><input class="form-control" type="text" value="{{ old('Penulis', $books->penulis) }}" name="penulis" placeholder="penulis"><small>Note : Jika penulis buku lebih dari 1 orang, GUNAKAN tanda koma (",") sebagai pemisah antar nama penulis<br></small></div>
             <div class="mb-3"><input class="form-control" type="url" value="{{ old('url', $books->url_gambar) }}" name="url_gambar" placeholder="Link Gambar"></div>
+            <div class="mb-3"><input class="form-control" type="text" value="{{ old('isbn', $books->isbn) }}" name="isbn" placeholder="ISBN"></div>
             <div class="mb-3"><input class="form-control" type="number" value="{{ old('Jumlah Halaman', $books->jumlah_halaman) }}" name="jumlah_halaman" placeholder="Jumlah Halaman"></div>
             <div class="mb-3"><input class="form-control" type="date" value="{{ old('Tanggal Terbit', $books->tanggal_terbit) }}" name="tanggal_terbit" placeholder="Tanggal Terbit (dd-mm-yyyy)"></div>
             <div class="mb-3"><textarea class="form-control" name="sinopsis" placeholder="sinopsis">{{ old('Sinopsis', $books->sinopsis) }}</textarea></div>

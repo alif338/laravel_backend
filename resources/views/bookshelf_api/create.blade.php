@@ -15,10 +15,10 @@
         <form method="POST" action="{{ route('store') }}">
             @csrf
             <h2 class="text-center">Buat Data Buku Baru</h2>
-            <div class="mb-3"><input class="form-control" type="text" placeholder="id" disabled=""></div>
             <div class="mb-3"><input class="form-control" type="text" name="judul_buku" placeholder="Judul Buku"></div>
-            <div class="mb-3"><input class="form-control" type="text" name="penulis" placeholder="penulis"><small>Note : Jika penulis buku lebih dari 1 orang, GUNAKAN tanda koma (",") sebagai pemisah antar nama penulis<br></small></div>
+            <div class="mb-3"><input class="form-control" type="text" name="penulis" placeholder="penulis"><small>Note : Jika penulis buku lebih dari 1 orang, GUNAKAN tanda slash ("/") sebagai pemisah antar nama penulis<br></small></div>
             <div class="mb-3"><input class="form-control" type="url" name="url_gambar" placeholder="Link Gambar"></div>
+            <div class="mb-3"><input class="form-control" type="text" name="isbn" placeholder="ISBN"></div>
             <div class="mb-3"><input class="form-control" type="number" name="jumlah_halaman" placeholder="Jumlah Halaman"></div>
             <div class="mb-3"><input class="form-control" type="date" name="tanggal_terbit" placeholder="Tanggal Terbit (dd-mm-yyyy)"></div>
             <div class="mb-3"><textarea class="form-control" name="sinopsis" placeholder="sinopsis"></textarea></div>

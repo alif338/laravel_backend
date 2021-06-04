@@ -65,6 +65,7 @@
                 <thead>
                     <tr class="flex-grow-0">
                         <th>Judul Buku</th>
+                        <th>Penulis</th>
                         <th>Jumlah Halaman</th>
                         <th>Tanggal Terbit</th>
                         <th>Action</th>
@@ -74,6 +75,7 @@
                     @forelse ($books as $item)
                     <tr>
                         <td><i>{{ $item->judul_buku }}</i></td>
+                        <td>{{ $item->penulis }}</td>
                         <td>{{ $item->jumlah_halaman }}</td>
                         <td>{{ $item->tanggal_terbit }}</td>
                         <td><a href="{{ route('show', ['book_id' => $item->id]) }}" class="btn btn-primary" type="button">Detail</a></td>
